@@ -45,26 +45,31 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <form method="post" id="webmailSignin-form">
+                                                <form action="" method="post" id="webmailSignin-form"
+                                                    name="contact-form">
                                                     <div class="card2 first-screen show ml-2">
                                                         <div class="row px-3">
                                                             <div class="form-group mt-1 mb-1"> <input type="text"
-                                                                    id="name" class="form-control" required=""> <label
+                                                                    id="name" name="UName" class="form-control"
+                                                                    required=""> <label
                                                                     class="ml-3 form-control-placeholder"
                                                                     for="email">Full
                                                                     Name</label> </div>
                                                             <div class="form-group mt-1 mb-1"> <input type="text"
-                                                                    id="email" class="form-control" required=""> <label
+                                                                    id="email" name="UEmail" class="form-control"
+                                                                    required=""> <label
                                                                     class="ml-3 form-control-placeholder"
                                                                     for="email">Email</label> </div>
 
                                                             <div class="form-group mt-1 mb-1"> <input type="text"
-                                                                    id="phone" class="form-control" required=""> <label
+                                                                    id="phone" name="UTelNumber" class="form-control"
+                                                                    required=""> <label
                                                                     class="ml-3 form-control-placeholder"
                                                                     for="email">Phone
                                                                     Number</label> </div>
                                                             <div class="form-group mt-1 mb-1"> <input type="text"
-                                                                    id="address" class="form-control" required="">
+                                                                    id="address" name="UAddress" class="form-control"
+                                                                    required="">
                                                                 <label class="ml-3 form-control-placeholder"
                                                                     for="email">Shipping
                                                                     Address</label>
@@ -76,7 +81,8 @@
                                                     <div class="card2 ml-2">
                                                         <div class="row px-3 mt-1">
                                                             <div class="form-group mt-3 mt-md-1 mb-1"><input type="date"
-                                                                    id="dob" class="form-control" required=""> <label
+                                                                    id="dob" name="Udateofbirth" class="form-control"
+                                                                    required=""> <label
                                                                     class="ml-3 form-control-placeholder2"
                                                                     for="pwd">Date of
                                                                     Birth</label> </div>
@@ -130,7 +136,8 @@
                                                                         <div class="custom-control custom-checkbox">
                                                                             <input id="customCheck4" type="checkbox"
                                                                                 class="custom-control-input"
-                                                                                name="perks[]" value="priority_access">
+                                                                                name="Upriority_access" name="perks[]"
+                                                                                value="priority_access">
                                                                             <label for="customCheck4"
                                                                                 class="custom-control-label"><small>Priority
                                                                                     Access to New Releases &amp; Early
@@ -232,122 +239,21 @@
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
     <script src="./assets/js/script.js"></script>
     <script>
-        // Get references to input fields
-        // const userInput = document.getElementById('name');
-        // const emailInput = document.getElementById('email');
-        // const phoneInput = document.getElementById('phone');
-        // const addressInput = document.getElementById('address');
-        // const dobInput = document.getElementById('dob');
-        // const randomCode = document.getElementById('randomCode');
 
-        // // Add an event listener to track user input and date change
-        // document.getElementById('webmailSignin-form').addEventListener('submit', function (event) {
-        //     event.preventDefault(); // Prevent the default form submission
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxwE_3qAe3WtflaFmBec_8gIbqatbT_yEHwCNtUCiX3D3X0AMVXjCiw0csAa8gG55lX/exec'
 
-        //     // Gather form data
-        //     const name = userInput.value;
-        //     const email = emailInput.value;
-        //     const phone = phoneInput.value;
-        //     const address = addressInput.value;
-        //     const dob = new Date(dobInput.value);
-        //     const year = dob.getFullYear(); // Get the year from the date input
+        const form = document.forms['contact-form']
 
-        //     // Prepare perks information
-        //     const perks = [];
-        //     const perkCheckboxes = document.querySelectorAll('input[name="perks[]"]:checked');
-        //     perkCheckboxes.forEach((checkbox) => {
-        //         perks.push(checkbox.value);
-        //     });
+        form.addEventListener('submit', e => {
 
-        //     // Google Form entry IDs (replace with actual entry IDs from your form)
-        //     const googleFormActionURL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfoNbTCtYeEHQBgZd8c2vzw0btELe2xOWmfhzRkmXw692T_Rg/formResponse"; // Replace with your form's URL
-        //     const formData = new URLSearchParams();
-        //     formData.append("entry.1820225589", name); // Replace with your actual entry ID for "name"
-        //     formData.append("entry.2075875979", email); // Replace with your actual entry ID for "email"
-        //     formData.append("entry.745034440", phone); // Replace with your actual entry ID for "phone"
-        //     formData.append("entry.1958847034", address); // Replace with your actual entry ID for "address"
-        //     formData.append("entry.1217529072_year", year); // Replace with your actual entry ID for "year"
-        //     formData.append("entry.2627282930", perks.join(", ")); // Replace with your actual entry ID for "perks"
-        //     formData.append("entry.3132333435", document.getElementById('shoutout').checked ? 'Yes' : 'No'); // Replace with your entry ID for "Meet & Greet Fan Card Request"
-        //     formData.append("entry.3637383940", `BTS-VIP-${randomCode.innerText}`); // Replace with your entry ID for "VIP Membership Code"
+            e.preventDefault()
 
-        //     // Send the form data to Google Form
-        //     fetch(googleFormActionURL, {
-        //         method: "POST",
-        //         body: formData,
-        //         headers: {
-        //             "Content-Type": "application/x-www-form-urlencoded",
-        //         },
-        //     })
-        //         .then(response => {
-        //             if (response.ok) {
-        //                 // Redirect to a success page
-        //                 window.location.href = `success.html?vipCode=BTS-VIP-${randomCode.innerText}`;
-        //             } else {
-        //                 alert('Error submitting the form.');
-        //             }
-        //         })
-        //         .catch(error => {
-        //             console.error('Error:', error);
-        //             alert('Error submitting the form.');
-        //         });
-        // });
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Thank you! Form is submitted"))
+                .then(() => { window.location.reload(); })
+                .catch(error => console.error('Error!', error.message))
+        })
 
-
-        // Add an event listener to track form submission
-        document.getElementById('webmailSignin-form').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Get references to input fields
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const address = document.getElementById('address').value;
-            const dob = new Date(document.getElementById('dob').value);
-            const dobYear = dob.getFullYear();
-            const dobMonth = dob.getMonth() + 1; // Months are 0-indexed
-            const dobDay = dob.getDate();
-            const randomCode = document.getElementById('randomCode').innerText;
-
-            // Gather perks information
-            const perks = [];
-            document.querySelectorAll('input[name="perks[]"]:checked').forEach((checkbox) => {
-                perks.push(checkbox.value);
-            });
-
-            const meetAndGreet = document.getElementById('shoutout').checked;
-
-            // Prepare form data for Google Form
-            const formData = new FormData();
-            formData.append("entry.1820225589", name); // Replace with Google Form entry ID for 'Name'
-            formData.append("entry.2075875979", email); // Replace with Google Form entry ID for 'Email'
-            formData.append("entry.745034440", phone); // Replace with Google Form entry ID for 'Phone'
-            formData.append("entry.1348928743", address); // Replace with Google Form entry ID for 'Address'
-            formData.append("entry.1217529072_year", dobYear); // Replace with Google Form entry ID for 'DOB Year'
-            formData.append("entry.1217529072_month", dobMonth); // Replace with Google Form entry ID for 'DOB Month'
-            formData.append("entry.1217529072_day", dobDay); // Replace with Google Form entry ID for 'DOB Day'
-            formData.append("entry.1392138435", perks.join(", ")); // Replace with Google Form entry ID for 'Perks'
-            formData.append("entry.1469719341", meetAndGreet ? "Yes" : "No"); // Replace with Google Form entry ID for 'Meet & Greet'
-            formData.append("entry.1958847034", `BTS-VIP-${randomCode}`); // Replace with Google Form entry ID for 'VIP Membership Code'
-
-            // Submit to Google Form
-            fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSfoNbTCtYeEHQBgZd8c2vzw0btELe2xOWmfhzRkmXw692T_Rg/formResponse', { // Replace 'YOUR_FORM_ID' with your actual Google Form ID
-                method: 'POST',
-                body: formData
-            })
-                .then(response => {
-                    if (response.ok) {
-                        // Redirect on success
-                        window.location.href = `success.html?vipCode=BTS-VIP-${randomCode}`;
-                    } else {
-                        alert('Error submitting the form. Please try again.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred. Please try again.');
-                });
-        });
 
     </script>
 
